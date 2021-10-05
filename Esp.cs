@@ -27,102 +27,151 @@ namespace DevourMono
 
             if (Settings.PlayerEsp)
             {
-                foreach (PlayerCharacterBehaviour p in Players)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(p.transform.position);
-                    if (w.z > 0)
+                    foreach (PlayerCharacterBehaviour p in Players)
                     {
-                        GUI.color = Color.cyan;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, p.transform.position)}m] Player");
-                        DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(w.x, Screen.height - w.y), Color.green, 2f);
-                        DrawAllBones(GetAllBones(p.GetComponent<Animator>()), Color.cyan);
-                        Draw3DBox(p.GetComponent<CapsuleCollider>().bounds, Color.cyan);
+                        Vector3 w = Cam.WorldToScreenPoint(p.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.cyan;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, p.transform.position)}m] Player");
+                            DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(w.x, Screen.height - w.y), Color.green, 2f);
+                            DrawAllBones(GetAllBones(p.GetComponent<Animator>()), Color.cyan);
+                            Draw3DBox(p.GetComponent<CapsuleCollider>().bounds, Color.cyan);
+                        }
                     }
                 }
+                catch { }
             }
             if (Settings.DemonEsp)
             {
-                foreach (SurvivalDemonBehaviour d in Demons)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(d.transform.position);
-                    if (w.z > 0)
+                    foreach (SurvivalDemonBehaviour d in Demons)
                     {
-                        GUI.color = Color.red;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, d.transform.position)}m] Demons");
-                        DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(w.x, Screen.height - w.y), Color.red, 2f);
-                        DrawAllBones(GetAllBones(d.GetComponent<Animator>()), Color.red);
-                        Draw3DBox(d.GetComponent<CapsuleCollider>().bounds, Color.red);
+                        Vector3 w = Cam.WorldToScreenPoint(d.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.red;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, d.transform.position)}m] Demon");
+                            DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(w.x, Screen.height - w.y), Color.red, 2f);
+                            DrawAllBones(GetAllBones(d.GetComponent<Animator>()), Color.red);
+                            Draw3DBox(d.GetComponent<CapsuleCollider>().bounds, Color.red);
+                        }
                     }
                 }
+                catch { }
+            }
+            if (Settings.SpiderEsp)
+            {
+                try
+                {
+                    foreach (SpiderBehaviour s in Spiders)
+                    {
+                        Vector3 w = Cam.WorldToScreenPoint(s.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.red;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, s.transform.position)}m] Spider");
+                            DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(w.x, Screen.height - w.y), Color.red, 2f);
+                        }
+                    }
+                }
+                catch { }
             }
             if (Settings.GoatEsp)
             {
-                foreach (GoatBehaviour g in Goats)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(g.transform.position);
-                    if (w.z > 0)
+                    foreach (GoatBehaviour g in Goats)
                     {
-                        GUI.color = Color.green;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, g.transform.position)}m] Goats");
+                        Vector3 w = Cam.WorldToScreenPoint(g.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.green;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, g.transform.position)}m] Goat");
+                        }
                     }
                 }
+                catch { }
             }
             if (Settings.ItemEsp)
             {
-                foreach (SurvivalInteractable i in Items)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(i.transform.position);
-                    if (w.z > 0)
+                    foreach (SurvivalInteractable i in Items)
                     {
-                        GUI.color = Color.yellow;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, i.transform.position)}m] {i.prefabName.Replace("Survival", "")}");
+                        Vector3 w = Cam.WorldToScreenPoint(i.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.yellow;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, i.transform.position)}m] {i.prefabName.Replace("Survival", "")}");
+                        }
                     }
                 }
+                catch { }
             }
             if (Settings.KeyEsp)
             {
-                foreach (KeyBehaviour k in Keys)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(k.transform.position);
-                    if (w.z > 0)
+                    foreach (KeyBehaviour k in Keys)
                     {
-                        GUI.color = Color.blue;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, k.transform.position)}m] {k.name.Replace("(Clone)","")}");
+                        Vector3 w = Cam.WorldToScreenPoint(k.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.blue;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, k.transform.position)}m] {k.name.Replace("(Clone)", "")}");
+                        }
                     }
                 }
+                catch { }
             }
             if (Settings.CollectibleEsp)
             {
-                foreach (CollectableInteractable c in Collectibles)
+                try
                 {
-                    Vector3 w = Cam.WorldToScreenPoint(c.transform.position);
-                    if (w.z > 0)
+                    foreach (CollectableInteractable c in Collectibles)
                     {
-                        GUI.color = Color.magenta;
-                        GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, c.transform.position)}m] {c.name}");
+                        Vector3 w = Cam.WorldToScreenPoint(c.transform.position);
+                        if (w.z > 0)
+                        {
+                            GUI.color = Color.magenta;
+                            GUI.Label(new Rect(w.x, Screen.height - w.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, c.transform.position)}m] {c.name}");
+                        }
                     }
                 }
+                catch { }
             }
             if (Settings.RitualEsp)
             {
-                Vector3 rw = Cam.WorldToScreenPoint(Ritual.transform.position);
-                if (rw.z > 0)
+                try
                 {
-                    GUI.color = Color.cyan;
-                    GUI.Label(new Rect(rw.x, Screen.height - rw.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, Ritual.transform.position)}m] Ritual");
+                    Vector3 rw = Cam.WorldToScreenPoint(Ritual.transform.position);
+                    if (rw.z > 0)
+                    {
+                        GUI.color = Color.cyan;
+                        GUI.Label(new Rect(rw.x, Screen.height - rw.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, Ritual.transform.position)}m] Ritual");
+                    }
                 }
+                catch { }
             }
             if (Settings.AzazelEsp)
             {
-                Vector3 aw = Cam.WorldToScreenPoint(Azazel.transform.position);
-                if (aw.z > 0)
+                try
                 {
-                    GUI.color = Color.red;
-                    GUI.Label(new Rect(aw.x, Screen.height - aw.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, Azazel.transform.position)}m] Azazel");
-                    DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(aw.x, Screen.height - aw.y), Color.red, 2f);
-                    DrawAllBones(GetAllBones(Azazel.GetComponent<Animator>()), Color.red);
-                    Draw3DBox(Azazel.GetComponent<CapsuleCollider>().bounds, Color.red);
+                    Vector3 aw = Cam.WorldToScreenPoint(Azazel.transform.position);
+                    if (aw.z > 0)
+                    {
+                        GUI.color = Color.red;
+                        GUI.Label(new Rect(aw.x, Screen.height - aw.y, 250, 100), $"[{(int)Vector3.Distance(Cam.transform.position, Azazel.transform.position)}m] Azazel");
+                        DrawLine(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(aw.x, Screen.height - aw.y), Color.red, 2f);
+                        DrawAllBones(GetAllBones(Azazel.GetComponent<Animator>()), Color.red);
+                        Draw3DBox(Azazel.GetComponent<CapsuleCollider>().bounds, Color.red);
+                    }
                 }
+                catch { }
             }
         }
 
@@ -139,25 +188,6 @@ namespace DevourMono
             GUIUtility.RotateAroundPivot(a, start);
             GUI.DrawTexture(new Rect(start.x, start.y - w, d.magnitude, width), Texture2D.whiteTexture, ScaleMode.StretchToFill);
             GUIUtility.RotateAroundPivot(-a, start);
-        }
-        void DrawBox(Vector3 w, Vector3 wH, Color c)
-        {
-            float h = Mathf.Abs(wH.y - w.y);
-            float x = w.x - h * .3f;
-            float y = Screen.height - wH.y;
-
-            DrawBox(new Vector2(x - 1f, y - 1f), new Vector2((h / 2f) + 2f, h + 2f), Color.black); // Outside
-            DrawBox(new Vector2(x, y), new Vector2(h / 2f, h), c); // Middle
-            DrawBox(new Vector2(x + 1f, y + 1f), new Vector2((h / 2f) - 2f, h - 2f), Color.black); // Inside
-        }
-        void DrawBox(Vector2 pos, Vector2 size, Color color)
-        {
-            GUI.color = color;
-
-            GUI.DrawTexture(new Rect(pos.x, pos.y, 1, size.y), Texture2D.whiteTexture);
-            GUI.DrawTexture(new Rect(pos.x + size.x, pos.y, 1, size.y), Texture2D.whiteTexture);
-            GUI.DrawTexture(new Rect(pos.x, pos.y, size.x, 1), Texture2D.whiteTexture);
-            GUI.DrawTexture(new Rect(pos.x, pos.y + size.y, size.x, 1), Texture2D.whiteTexture);
         }
         void Draw3DBox(Bounds b, Color color)
         {
@@ -216,28 +246,6 @@ namespace DevourMono
             GL.End();
             GL.PopMatrix();
 
-        }
-        void DrawCircle(Color Col, Vector2 Center, float Radius)
-        {
-            GL.PushMatrix();
-
-            mat.SetPass(0);
-
-            GL.Begin(1);
-            GL.Color(Col);
-
-            for (float num = 0f; num < 6.28318548f; num += 0.05f)
-            {
-                GL.Vertex(new Vector3(Mathf.Cos(num) * Radius + Center.x, Mathf.Sin(num) * Radius + Center.y));
-                GL.Vertex(new Vector3(Mathf.Cos(num + 0.05f) * Radius + Center.x, Mathf.Sin(num + 0.05f) * Radius + Center.y));
-            }
-
-            GL.End();
-            GL.PopMatrix();
-        }
-        void RectFilled(float x, float y, float width, float height)
-        {
-            GUI.DrawTexture(new Rect(x, y, width, height), Texture2D.whiteTexture);
         }
         public static List<Transform> GetAllBones(Animator a)
         {

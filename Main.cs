@@ -17,6 +17,7 @@ namespace DevourMono
 
         public static List<PlayerCharacterBehaviour> Players = new List<PlayerCharacterBehaviour>();
         public static List<SurvivalDemonBehaviour> Demons = new List<SurvivalDemonBehaviour>();
+        public static List<SpiderBehaviour> Spiders = new List<SpiderBehaviour>();
         public static List<GoatBehaviour> Goats = new List<GoatBehaviour>();
         public static List<SurvivalEggInteractable> Eggs = new List<SurvivalEggInteractable>();
         public static List<SurvivalInteractable> Items = new List<SurvivalInteractable>();
@@ -49,9 +50,10 @@ namespace DevourMono
                 string[] names = { "hasAchievedFusesUsed", "hasAchievedGasolineUsed", "hasAchievedNoKnockout", "hasCollectedAllPatches", "hasCollectedAllRoses",
                 "hasCompletedHardAsylumGame", "hasCompletedHardGame", "hasCompletedNightmareAsylumGame", "hasCompletedNightmareGame", "hasCompletedNormalGame",
                 "isStatsValid", "isStatsFetched" };
-                object[] values = { true, true, true, true, true, true, true, true, true, true, true, true };
-
-                ReplaceMultipleFields(ah, names, values, BindingFlags.Instance | BindingFlags.NonPublic);
+                for (int i = 0; i < names.Length; i++)
+                {
+                    ah.GetType().GetField(names[i], BindingFlags.Instance | BindingFlags.NonPublic).SetValue(ah, true);
+                }
 
                 string[] achievments = { "ACH_ALL_ROSES", "ACH_BURNT_GOAT", "ACH_SURVIVED_TO_3_GOATS", "ACH_SURVIVED_TO_5_GOATS", "ACH_SURVIVED_TO_7_GOATS", "ACH_WON_SP", "ACH_WON_COOP",
                 "ACH_LOST", "ACH_LURED_20_GOATS", "ACH_REVIVED_20_PLAYERS", "ACH_ALL_NOTES_READ", "ACH_KNOCKED_OUT_BY_ANNA", "ACH_KNOCKOUT_OUT_BY_DEMON", "ACH_KNOCKED_OUT_20_TIMES",
@@ -141,14 +143,7 @@ namespace DevourMono
                     LocalPlayer.GetComponent<UltimateCharacterLocomotion>().TimeScale = 5f;
                 else
                     LocalPlayer.GetComponent<UltimateCharacterLocomotion>().TimeScale = 1f;
-            }
-        }
-        void ReplaceMultipleFields(object obj, string[] names, object[] values, BindingFlags bf)
-        {
-            for (int i = 0; i < names.Length; i++)
-            {
-                obj.GetType().GetField(names[i], bf).SetValue(obj, values[i]);
-            }
+            } // 5x Speed
         }
 
         IEnumerator MainUpdateFunc(float time)
@@ -162,6 +157,7 @@ namespace DevourMono
                 #region Add To Lists
                 Players = FindObjectsOfType<PlayerCharacterBehaviour>().ToList();
                 Demons = FindObjectsOfType<SurvivalDemonBehaviour>().ToList();
+                Spiders = FindObjectsOfType<SpiderBehaviour>().ToList();
                 Goats = FindObjectsOfType<GoatBehaviour>().ToList();
                 Eggs = FindObjectsOfType<SurvivalEggInteractable>().ToList();
                 

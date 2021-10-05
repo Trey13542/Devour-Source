@@ -25,11 +25,12 @@ namespace DevourMono
                 Settings.AzazelEsp = GUI.Toggle(new Rect(5, 45, 150, 25), Settings.AzazelEsp, "Azazel Esp");
                 Settings.PlayerEsp = GUI.Toggle(new Rect(5, 70, 150, 25), Settings.PlayerEsp, "Player Esp");
                 Settings.DemonEsp = GUI.Toggle(new Rect(5, 95, 150, 25), Settings.DemonEsp, "Demon Esp");
-                Settings.GoatEsp = GUI.Toggle(new Rect(5, 120, 150, 25), Settings.GoatEsp, "Goat Esp");
-                Settings.ItemEsp = GUI.Toggle(new Rect(5, 145, 150, 25), Settings.ItemEsp, "Item Esp");
-                Settings.KeyEsp = GUI.Toggle(new Rect(5, 170, 150, 25), Settings.KeyEsp, "Key Esp");
-                Settings.CollectibleEsp = GUI.Toggle(new Rect(5, 195, 150, 25), Settings.CollectibleEsp, "Collectible Esp");
-                Settings.RitualEsp = GUI.Toggle(new Rect(5, 220, 150, 25), Settings.RitualEsp, "Ritual Bowl Esp");
+                Settings.SpiderEsp = GUI.Toggle(new Rect(5, 120, 150, 25), Settings.SpiderEsp, "Spider Esp");
+                Settings.GoatEsp = GUI.Toggle(new Rect(5, 145, 150, 25), Settings.GoatEsp, "Goat Esp");
+                Settings.ItemEsp = GUI.Toggle(new Rect(5, 170, 150, 25), Settings.ItemEsp, "Item Esp");
+                Settings.KeyEsp = GUI.Toggle(new Rect(5, 195, 150, 25), Settings.KeyEsp, "Key Esp");
+                Settings.CollectibleEsp = GUI.Toggle(new Rect(5, 220, 150, 25), Settings.CollectibleEsp, "Collectible Esp");
+                Settings.RitualEsp = GUI.Toggle(new Rect(5, 245, 150, 25), Settings.RitualEsp, "Ritual Bowl Esp");
 
                 GUI.Label(new Rect(125, 45, 300, 100), $"Numpad0-Unlock Robes & Ach.");
                 GUI.Label(new Rect(125, 60, 300, 100), $"Numpad1-Unlock Doors");

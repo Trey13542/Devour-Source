@@ -8,6 +8,7 @@ namespace DevourMono
         public static bool PlayerEsp = false;
         public static bool DemonEsp = false;
         public static bool GoatEsp = false;
+        public static bool SpiderEsp = false;
         public static bool ItemEsp = false;
         public static bool KeyEsp = false;
         public static bool CollectibleEsp = false;
